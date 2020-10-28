@@ -1,20 +1,13 @@
-class Palindrome
+numbers = [*500..5000]
+palindromic_numbers = []
 
-  def initialize
-    @numbers = [*50..5000]
-    @palindromic_numbers = []
-  end
+numbers[0..25].each do |number|
+    total_integer = number + number.digits.join.to_i
+    total_digits = total_integer.digits
 
-  def find_palindrome
-    @numbers[0..25].each do |number|
-      if number.digits.join.to_s != number.to_s
-        total_integer = number + number.digits.join.to_i
-        total_digits = total_integer.digits
-
-        if total_digits.first == total_digits.last && total_integer > 100
-          @palindromic_numbers << number
-        end
-      end
+    if total_digits.first == total_digits.last && total_integer > 1000
+      palindromic_numbers << number
     end
   end
-end
+  
+puts palindromic_numbers
